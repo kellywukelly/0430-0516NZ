@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 紐西蘭 17 天 · 南進北出圓夢之旅</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1e3a2f;
+    --moss: #2d5a3d;
+    --sage: #5c8a6e;
+    --mist: #a8c5b5;
+    --cream: #f5f0e8;
+    --parchment: #ede6d6;
+    --gold: #c8973a;
+    --amber: #e8b85a;
+    --sky: #7aafc4;
+    --lake: #4a8fa8;
+    --ink: #1a1a1a;
+    --soft: #5a5a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background: var(--forest);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 80%, rgba(74,143,168,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(92,138,110,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 10%, rgba(200,151,58,0.15) 0%, transparent 60%);
+  }
+
+  /* Mountain silhouette SVG */
+  .hero-mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.18;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--amber);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--mist);
+    margin-top: 1.2rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .hero-meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-top: 0.3rem;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--mist);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s ease infinite;
+    z-index: 2;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--mist), transparent);
+  }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(30,58,47,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(168,197,181,0.15);
+    padding: 0.9rem 2rem;
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sticky-nav::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mist);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: rgba(168,197,181,0.15);
+    color: var(--cream);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(30,58,47,0.15);
+    padding-bottom: 1rem;
+  }
+
+  .section-icon {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--forest);
+  }
+
+  /* ── FLIGHTS ── */
+  #flights { background: var(--cream); }
+
+  .flight-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .flight-card {
+    background: var(--forest);
+    border-radius: 12px;
+    padding: 1.1rem 1.6rem;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .flight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(30,58,47,0.25);
+  }
+
+  .flight-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+  }
+
+  .flight-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1.2;
+  }
+
+  .flight-info { }
+
+  .flight-num {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 0.3rem;
+  }
+
+  .flight-route {
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+
+  .flight-time {
+    color: var(--amber);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .flight-tag {
+    font-size: 0.6rem;
+    background: rgba(200,151,58,0.2);
+    color: var(--amber);
+    border: 1px solid rgba(200,151,58,0.3);
+    border-radius: 20px;
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+
+  /* ── ACCOMMODATION ── */
+  #accommodation { background: var(--parchment); }
+
+  .stay-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .stay-card {
+    background: white;
+    border-radius: 14px;
+    padding: 1.4rem;
+    border: 1px solid rgba(30,58,47,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .stay-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(30,58,47,0.12);
+  }
+
+  .stay-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sage), var(--sky));
+  }
+
+  .stay-period {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .stay-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .stay-nights {
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .stay-name {
+    font-size: 0.82rem;
+    color: var(--soft);
+    line-height: 1.4;
+  }
+
+  /* ── ITINERARY TIMELINE ── */
+  #itinerary { background: var(--cream); }
+
+  .phase {
+    margin-bottom: 4rem;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    padding: 0.9rem 1.4rem;
+    background: var(--forest);
+    border-radius: 10px;
+  }
+
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--amber);
+    opacity: 0.7;
+    line-height: 1;
+  }
+
+  .phase-info { }
+
+  .phase-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 0.2rem;
+  }
+
+  .phase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream);
+    font-style: italic;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--sage), transparent);
+  }
+
+  .day-item {
+    position: relative;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.5s ease;
+  }
+
+  .day-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .day-dot {
+    position: absolute;
+    left: -2rem;
+    top: 0.9rem;
+    width: 10px;
+    height: 10px;
+    background: var(--sage);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--sage);
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid rgba(30,58,47,0.07);
+    transition: box-shadow 0.2s;
+  }
+
+  .day-card:hover {
+    box-shadow: 0 8px 24px rgba(30,58,47,0.1);
+  }
+
+  .day-top {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .day-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1;
+  }
+
+  .day-weekday {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+  }
+
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--forest);
+    font-style: italic;
+    margin-left: auto;
+  }
+
+  .day-activities {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .activity-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.83rem;
+    color: var(--soft);
+    line-height: 1.5;
+  }
+
+  .activity-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+
+  .day-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(30,58,47,0.06);
+    flex-wrap: wrap;
+  }
+
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--soft);
+    background: var(--parchment);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+  }
+
+  .meta-chip .icon { font-size: 0.85rem; }
+
+  /* special days */
+  .day-card.highlight {
+    border-color: rgba(200,151,58,0.25);
+    background: linear-gradient(135deg, white 0%, rgba(255,244,225,0.4) 100%);
+  }
+
+  .day-card.split {
+    border-color: rgba(92,138,110,0.25);
+    background: linear-gradient(135deg, white 0%, rgba(220,240,230,0.3) 100%);
+  }
+
+  /* ── TIPS ── */
+  #tips { background: var(--forest); }
+
+  #tips .section-title { color: var(--cream); }
+  #tips .section-header { border-color: rgba(168,197,181,0.2); }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .tip-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(168,197,181,0.15);
+    border-radius: 12px;
+    padding: 1.4rem;
+    transition: background 0.2s;
+  }
+
+  .tip-card:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .tip-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: rgba(200,151,58,0.35);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .tip-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.5rem;
+  }
+
+  .tip-text {
+    font-size: 0.83rem;
+    color: var(--mist);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111;
+    color: rgba(168,197,181,0.5);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  footer strong { color: var(--amber); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .flight-card { grid-template-columns: 60px 1fr; }
+    .flight-time { display: none; }
+    .day-title { display: none; }
+    .hero-meta { gap: 1.5rem; }
+  }
+
+  /* divider */
+  .wave-divider {
+    height: 60px;
+    background: var(--forest);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .wave-divider.inv {
+    background: var(--parchment);
+    clip-path: ellipse(55% 100% at 50% 0%);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 300 L0 200 L120 150 L240 80 L320 140 L400 60 L500 130 L620 40 L720 120 L820 30 L920 110 L1040 50 L1140 130 L1240 70 L1360 160 L1440 100 L1440 300 Z" fill="white"/>
+    <path d="M0 300 L0 240 L80 200 L200 240 L300 180 L440 220 L560 170 L680 210 L800 160 L920 200 L1040 150 L1160 195 L1300 170 L1440 210 L1440 300 Z" fill="rgba(92,138,110,0.4)"/>
+  </svg>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Air New Zealand · 2026 · 六人同行</p>
+    <h1 class="hero-title">紐西蘭<br><em>17 天</em><br>南進北出</h1>
+    <p class="hero-sub">圓夢之旅 · 4月30日 — 5月16日</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">17</div>
+        <div class="hero-meta-label">天數</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">6</div>
+        <div class="hero-meta-label">旅伴</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">4</div>
+        <div class="hero-meta-label">主要城市</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-num">7</div>
+        <div class="hero-meta-label">住宿地點</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ NAV ══ -->
+<nav class="sticky-nav">
+  <a class="nav-link" href="#flights">✈ 航班</a>
+  <a class="nav-link" href="#accommodation">🏠 住宿</a>
+  <a class="nav-link" href="#phase1">皇后鎮</a>
+  <a class="nav-link" href="#phase2">南島中段</a>
+  <a class="nav-link" href="#phase3">基督城</a>
+  <a class="nav-link" href="#phase4">北島</a>
+  <a class="nav-link" href="#tips">💡 叮嚀</a>
+</nav>
+
+<!-- ══ FLIGHTS ══ -->
+<div id="flights">
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">✈️</span>
+    <h2 class="section-title">航班資訊 · Air New Zealand</h2>
+  </div>
+  <div class="flight-grid">
+
+    <div class="flight-card">
+      <div class="flight-date">4/30<br><small style="font-size:0.75rem;color:var(--mist)">週四</small></div>
+      <div class="flight-info">
+        <div class="flight-num">NZ0078</div>
+        <div class="flight-route">台北 (TPE) → 奧克蘭 (AKL)</div>
+        <span class="flight-tag">出發</span>
+      </div>
+      <div class="flight-time">18:35<br><span style="color:var(--mist);font-size:0.8rem">→ 09:15(+1)</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-date">5/01<br><small style="font-size:0.75rem;color:var(--mist)">週五</small></div>
+      <div class="flight-info">
+        <div class="flight-num">NZ0623</div>
+        <div class="flight-route">奧克蘭 (AKL) → 皇后鎮 (ZQN)</div>
+        <span class="flight-tag">轉機</span>
+      </div>
+      <div class="flight-time">14:40<br><span style="color:var(--mist);font-size:0.8rem">→ 16:35</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-date">5/11<br><small style="font-size:0.75rem;color:var(--mist)">週一</small></div>
+      <div class="flight-info">
+        <div class="flight-num">捷星 Jetstar</div>
+        <div class="flight-route">基督城 (CHC) → 奧克蘭 (AKL)</div>
+        <span class="flight-tag">2人組回台</span>
+      </div>
+      <div class="flight-time">12:55<br><span style="color:var(--mist);font-size:0.8rem">→ 14:15</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-date">5/12<br><small style="font-size:0.75rem;color:var(--mist)">週二</small></div>
+      <div class="flight-info">
+        <div class="flight-num">NZ0077</div>
+        <div class="flight-route">奧克蘭 (AKL) → 台北 (TPE)</div>
+        <span class="flight-tag">2人組回台</span>
+      </div>
+      <div class="flight-time">09:40<br><span style="color:var(--mist);font-size:0.8rem">→ 17:05</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-date">5/13<br><small style="font-size:0.75rem;color:var(--mist)">週三</small></div>
+      <div class="flight-info">
+        <div class="flight-num">NZ0546</div>
+        <div class="flight-route">基督城 (CHC) → 奧克蘭 (AKL)</div>
+        <span class="flight-tag">4人組玩滿</span>
+      </div>
+      <div class="flight-time">13:15<br><span style="color:var(--mist);font-size:0.8rem">→ 14:40</span></div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-date">5/16<br><small style="font-size:0.75rem;color:var(--mist)">週六</small></div>
+      <div class="flight-info">
+        <div class="flight-num">NZ0077</div>
+        <div class="flight-route">奧克蘭 (AKL) → 台北 (TPE)</div>
+        <span class="flight-tag">4人組回台</span>
+      </div>
+      <div class="flight-time">09:40<br><span style="color:var(--mist);font-size:0.8rem">→ 17:05</span></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ ACCOMMODATION ══ -->
+<div id="accommodation" style="background:var(--parchment)">
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🏠</span>
+    <h2 class="section-title">精選住宿清單</h2>
+  </div>
+  <div class="stay-list">
+
+    <div class="stay-card">
+      <div class="stay-period">5/1 – 5/5</div>
+      <div class="stay-location">皇后鎮</div>
+      <div class="stay-nights">🌙 4 晚</div>
+      <div class="stay-name">Lakeview 4BR Retreat with Spacious Living</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/5 – 5/7</div>
+      <div class="stay-location">Twizel</div>
+      <div class="stay-nights">🌙 2 晚</div>
+      <div class="stay-name">Tussock Horizons</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/7 – 5/8</div>
+      <div class="stay-location">Lake Tekapo</div>
+      <div class="stay-nights">🌙 1 晚</div>
+      <div class="stay-name">22 Rodman Lane, Lake Tekapo</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/8 – 5/11</div>
+      <div class="stay-location">基督城</div>
+      <div class="stay-nights">🌙 3 晚</div>
+      <div class="stay-name">基督城市區景觀別墅／公寓</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/11 – 5/13</div>
+      <div class="stay-location">凱庫拉</div>
+      <div class="stay-nights">🌙 2 晚 · 4人組</div>
+      <div class="stay-name">凱庫拉海濱 Motel</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/13 – 5/15</div>
+      <div class="stay-location">奧克蘭</div>
+      <div class="stay-nights">🌙 2 晚 · 4人組</div>
+      <div class="stay-name">Epsom / Newmarket 區域公寓</div>
+    </div>
+
+    <div class="stay-card">
+      <div class="stay-period">5/15 – 5/16</div>
+      <div class="stay-location">機場</div>
+      <div class="stay-nights">🌙 1 晚 · 4人組</div>
+      <div class="stay-name">Novotel / Pullman Auckland Airport</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ ITINERARY ══ -->
+<div id="itinerary">
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🗓️</span>
+    <h2 class="section-title">每日行程細節</h2>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="phase" id="phase1">
+    <div class="phase-header">
+      <div class="phase-num">01</div>
+      <div class="phase-info">
+        <div class="phase-label">第一階段 · 5/1 – 5/4</div>
+        <div class="phase-title">皇后鎮悠閒時光</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/1</span>
+            <span class="day-weekday">週五</span>
+            <span class="day-title">抵達皇后鎮</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>機場取車</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>超市大採買</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>入住湖景別墅</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>10 km / 約 20 分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card highlight">
+          <div class="day-top">
+            <span class="day-date">5/2</span>
+            <span class="day-weekday">週六</span>
+            <span class="day-title">米佛峽灣一日團</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>搭乘專車往返米佛峽灣 (Coach-Cruise-Coach)</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>全員休息賞景、峽灣巡航</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚌</span>搭乘接駁車</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/3</span>
+            <span class="day-weekday">週日</span>
+            <span class="day-title">箭鎮散策</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>魔戒拍攝場景巡禮 (Arrowtown)</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>箭鎮午餐</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>下午回別墅看湖放鬆</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>45 km / 約 1 小時</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/4</span>
+            <span class="day-weekday">週一</span>
+            <span class="day-title">皇后鎮市區遊</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>Skyline 纜車</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>Luge 滑車</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>購買伴手禮</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🏙️</span>市區移動</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase" id="phase2">
+    <div class="phase-header">
+      <div class="phase-num">02</div>
+      <div class="phase-info">
+        <div class="phase-label">第二階段 · 5/5 – 5/7</div>
+        <div class="phase-title">南島中段壯遊</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/5</span>
+            <span class="day-weekday">週二</span>
+            <span class="day-title">皇后鎮 → Twizel</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>瓦納卡孤獨樹打卡</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>Pukaki 湖買鮭魚</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>200 km / 約 2.5 小時</span>
+            <span class="meta-chip"><span class="icon">🐟</span>必買鮭魚</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card highlight">
+          <div class="day-top">
+            <span class="day-date">5/6</span>
+            <span class="day-weekday">週三</span>
+            <span class="day-title">庫克山冰川圓夢日</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>⭐ Heli-hike 直升機冰上健行</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>庫克山步道</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>130 km / 約 1.5 小時</span>
+            <span class="meta-chip"><span class="icon">🚁</span>直升機體驗</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/7</span>
+            <span class="day-weekday">週四</span>
+            <span class="day-title">蒂卡波星空</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>Hooker Valley 步道看冰河</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>牧羊人教堂</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>22 Rodman Ln 入住觀星</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>110 km / 約 1.5 小時</span>
+            <span class="meta-chip"><span class="icon">⭐</span>星空觀測</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase" id="phase3">
+    <div class="phase-header">
+      <div class="phase-num">03</div>
+      <div class="phase-info">
+        <div class="phase-label">第三階段 · 5/8 – 5/12</div>
+        <div class="phase-title">基督城週末與分流</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/8</span>
+            <span class="day-weekday">週五</span>
+            <span class="day-title">蒂卡波 → 基督城</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>上午賞蒂卡波湖晨景</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>下午驅車前往花園城市基督城</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>230 km / 約 3 小時</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/9</span>
+            <span class="day-weekday">週六</span>
+            <span class="day-title">農夫市集散步</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>Riccarton House 農夫市集（週六限定）</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>雅芳河撐篙</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🏙️</span>市區移動</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card highlight">
+          <div class="day-top">
+            <span class="day-date">5/10</span>
+            <span class="day-weekday">週日</span>
+            <span class="day-title">阿卡羅阿法國小鎮</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>法式小鎮 Akaroa 一日遊</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>享用炸魚薯條</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>🎉 全員畢業慶祝晚餐</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>160 km 來回 / 約 2.5 小時</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card split">
+          <div class="day-top">
+            <span class="day-date">5/11</span>
+            <span class="day-weekday">週一</span>
+            <span class="day-title">【分流日】</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>✈ 2人組：捷星 12:55 → 14:15 飛奧克蘭，轉機返台</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>🚗 4人組：北上凱庫拉</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>185 km / 約 2.5 小時（4人組）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/12</span>
+            <span class="day-weekday">週二</span>
+            <span class="day-title">凱庫拉生態之旅</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>海豚共游或觀看</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>凱庫拉龍蝦 BBQ</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🌊</span>市區移動</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="phase" id="phase4">
+    <div class="phase-header">
+      <div class="phase-num">04</div>
+      <div class="phase-info">
+        <div class="phase-label">第四階段 · 5/13 – 5/16</div>
+        <div class="phase-title">北島探親與魔戒結局</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/13</span>
+            <span class="day-weekday">週三</span>
+            <span class="day-title">飛抵奧克蘭</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>✈ NZ0546 (13:15 → 14:40) 基督城飛奧克蘭</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>前往 Epsom 區陪伴大阿姨</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card highlight">
+          <div class="day-top">
+            <span class="day-date">5/14</span>
+            <span class="day-weekday">週四</span>
+            <span class="day-title">哈比村 · 螢火蟲洞</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>哈比村 Hobbiton 導覽</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>懷托摩螢火蟲洞</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>入住陶波湖景飯店</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>270 km / 約 3.5 小時</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card">
+          <div class="day-top">
+            <span class="day-date">5/15</span>
+            <span class="day-weekday">週五</span>
+            <span class="day-title">地熱奇觀</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>胡卡瀑布</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>羅托魯瓦地熱公園</span></div>
+            <div class="activity-row"><div class="activity-dot"></div><span>傍晚機場還車，入住機場飯店</span></div>
+          </div>
+          <div class="day-meta">
+            <span class="meta-chip"><span class="icon">🚗</span>280 km / 約 3.5 小時</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-card split">
+          <div class="day-top">
+            <span class="day-date">5/16</span>
+            <span class="day-weekday">週六</span>
+            <span class="day-title">平安返家 🎊</span>
+          </div>
+          <div class="day-activities">
+            <div class="activity-row"><div class="activity-dot"></div><span>✈ NZ0077 奧克蘭出發 09:40，台北抵達 17:05</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ TIPS ══ -->
+<div id="tips">
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">💡</span>
+    <h2 class="section-title">駕駛與行前叮嚀</h2>
+  </div>
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <div class="tip-num">01</div>
+      <div class="tip-title">⛄ 5月氣候</div>
+      <div class="tip-text">已進入初冬，路面可能有霜或黑冰。清晨駕駛請務必減速，出發前確認路況。</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">02</div>
+      <div class="tip-title">🛒 超市補給</div>
+      <div class="tip-text">皇后鎮 (New World / Countdown) 與 Twizel (Four Square) 是兩大重要補給站，請提前規劃採買。</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">03</div>
+      <div class="tip-title">🚌 行李載重</div>
+      <div class="tip-text">6人行李量大，租用大型車輛前請確認停車場高度與車位寬度，避免意外。</div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-num">04</div>
+      <div class="tip-title">🐟 鮭魚必吃</div>
+      <div class="tip-text">5/5 在 Pukaki 湖買的鮭魚，建議在 Tussock Horizons 廚房烹調，空間最舒適！</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <strong>2026 紐西蘭 17 天 · 南進北出圓夢之旅</strong><br>
+  <span style="margin-top:0.5rem;display:block">Air New Zealand · 4/30 – 5/16 · 六人同行 · 一起去冒險 🌿</span>
+</footer>
+
+<script>
+  // Intersection Observer for timeline animation
+  const items = document.querySelectorAll('.day-item');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
